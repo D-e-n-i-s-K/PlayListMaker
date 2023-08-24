@@ -13,4 +13,46 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+
+
+    <style name="body_main_activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@color/plm_blue</item>
+        <item name="android:paddingHorizontal">@dimen/body_main_activity_paddingHorizontal</item>
+        <item name="android:paddingEnd">@dimen/body_main_activity_paddingEnd</item>
+        <item name="android:paddingBottom">@dimen/body_main_activity_paddingBottom</item>
+    </style>
+
+    <style name="header_main_activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/app_name</item>
+        <item name="android:textSize">@dimen/header_main_activity_textSize</item>
+        <item name="android:textColor">@color/plm_white</item>
+        <item name="android:paddingTop">@dimen/header_main_activity_paddingTop</item>
+        <item name="android:paddingBottom">@dimen/header_main_activity_paddingBottom</item>
+        <item name="android:layout_marginRight">@dimen/header_main_activity_layout_marginRight</item>
+        <item name="android:layout_marginTop">@dimen/header_main_activity_layout_marginTop</item>
+        <item name="android:layout_marginBottom">@dimen/header_main_activity_layout_marginBottom</item>
+    </style>
+
+    <style name="button_main_activity">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:paddingHorizontal">@dimen/button_main_activity_paddingHorizontal</item>
+        <item name="android:textColor">@color/plm_black</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">@dimen/button_main_activity_textSize</item>
+        <item name="cornerRadius">@dimen/button_main_activity_cornerRadius</item>
+        <item name="iconGravity">textStart</item>
+        <item name="android:backgroundTint">@color/plm_white</item>
+        <item name="iconTint">@color/plm_black</item>
+    </style>
+
+
+
 </resources>

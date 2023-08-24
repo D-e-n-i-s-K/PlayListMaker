@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="button_main_activity_cornerRadius">16dp</dimen>
+    <dimen name="button_main_activity_textSize">26sp</dimen>
+    <dimen name="button_main_activity_paddingHorizontal">16dp</dimen>
+
+    <dimen name="header_main_activity_textSize">26sp</dimen>
+    <dimen name="header_main_activity_paddingTop">10dp</dimen>
+    <dimen name="header_main_activity_paddingBottom">12dp</dimen>
+    <dimen name="header_main_activity_layout_marginRight">52dp</dimen>
+    <dimen name="header_main_activity_layout_marginTop">4dp</dimen>
+    <dimen name="header_main_activity_layout_marginBottom">24dp</dimen>
+
+    <dimen name="body_main_activity_paddingHorizontal">16dp</dimen>
+    <dimen name="body_main_activity_paddingEnd">18dp</dimen>
+    <dimen name="body_main_activity_paddingBottom">28dp</dimen>
+
+</resources>

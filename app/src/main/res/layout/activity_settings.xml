@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/activity_settings_body">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:id="@+id/activity_setting_header"
+        android:text = "@string/settings"
+        style="@style/activity_header"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        style="@style/activity_settings_switchButton"
+    />
+
+    <Button
+        android:id="@+id/activity_settings_share_app_button"
+        style="@style/activity_settings_button"
+        android:text="@string/share_app"
+        app:icon="@drawable/share_app_icon"
+        />
+
+    <Button
+        android:id="@+id/activity_settings_mail_to_support_button"
+        style="@style/activity_settings_button"
+        android:text="@string/mail_to_support"
+        app:icon="@drawable/mail_to_support_icon" />
+
+    <Button
+        android:id="@+id/activity_settings_user_agree_button"
+        style="@style/activity_settings_button"
+        android:text="@string/user_agree"
+        app:icon="@drawable/arrow_forward_icon" />
+
+</LinearLayout>

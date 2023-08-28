@@ -8,8 +8,9 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
-
     <color name="plm_black">#1A1B22</color>
     <color name="plm_blue">#3772E7</color>
     <color name="plm_white">#FFFFFF</color>
+    <color name="plm_gray">#AEAFB4</color>
+
 </resources>

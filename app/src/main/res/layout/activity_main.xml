@@ -2,28 +2,30 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-   style="@style/body_main_activity"
+   style="@style/activity_main_body"
     >
     <TextView
-        android:id="@+id/header_main_activity"
-        style="@style/header_main_activity"
-
+        android:id="@+id/activity_main_button_header"
+        style="@style/activity_main_header"
         />
+
     <Button
-        android:id="@+id/search_button"
+        android:id="@+id/activity_main_button_search"
         android:text="@string/search"
         app:icon="@drawable/search_icon"
-        style="@style/button_main_activity" />
+        style="@style/activity_main_button" />
+
     <Button
-        android:id="@+id/media_button"
+        android:id="@+id/activity_main_button_media"
         android:text="@string/media"
         app:icon="@drawable/media_icon"
-        style="@style/button_main_activity" />
+        style="@style/activity_main_button" />
+
     <Button
-        android:id="@+id/settings_button"
+        android:id="@+id/activity_main_button_settings"
         android:text="@string/settings"
         app:icon="@drawable/settings_icon"
-        style="@style/button_main_activity" />
+        style="@style/activity_main_button" />
 
 </LinearLayout>
 

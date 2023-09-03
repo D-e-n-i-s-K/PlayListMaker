@@ -67,6 +67,19 @@
         <item name="drawableTint">@color/plm_white</item>
     </style>
 
+    <style name="activity_settings_switchButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/activity_settings_switchButton_layout_marginTop</item>
+        <item name="android:layout_marginBottom">@dimen/activity_settings_switchButton_marginBottom</item>
+        <item name="android:paddingStart">@dimen/activity_settings_switchButton_paddingStart</item>
+        <item name="android:paddingEnd">@dimen/activity_settings_switchButton_paddingEnd</item>
+        <item name="android:text">@string/night_mode</item>
+        <item name="android:textSize">@dimen/activity_settings_switchButton_textSize</item>
+        <item name="android:fontWeight">@integer/activity_settings_switchButton_fontWeight</item>
+        <item name="android:fontFamily">@font/ys_display_medium</item>
+    </style>
+
     <style name="activity_settings_button"   parent="@style/Widget.MaterialComponents.Button.UnelevatedButton">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -88,18 +101,7 @@
 
 
 
-    <style name="activity_settings_switchButton">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginTop">@dimen/activity_settings_switchButton_layout_marginTop</item>
-        <item name="android:layout_marginBottom">@dimen/activity_settings_switchButton_marginBottom</item>
-        <item name="android:paddingStart">@dimen/activity_settings_switchButton_paddingStart</item>
-        <item name="android:paddingEnd">@dimen/activity_settings_switchButton_paddingEnd</item>
-        <item name="android:text">@string/night_mode</item>
-        <item name="android:textSize">@dimen/activity_settings_switchButton_textSize</item>
-        <item name="android:fontWeight">@integer/activity_settings_switchButton_fontWeight</item>
-        <item name="android:fontFamily">@font/ys_display_medium</item>
-    </style>
+
 
 
 </resources>

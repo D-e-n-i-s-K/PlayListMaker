@@ -8,6 +8,6 @@
     <TextView
         android:id="@+id/activity_search_header"
         android:text = "@string/search"
-        style="@style/activity_header"/>
+        style="@style/activity_settings_header"/>
 
 </LinearLayout>

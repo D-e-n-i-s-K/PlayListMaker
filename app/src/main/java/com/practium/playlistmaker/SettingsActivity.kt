@@ -14,8 +14,8 @@ class SettingsActivity : AppCompatActivity() {
 
         val backToMainMenu = findViewById<TextView>(R.id.activity_setting_header)
         val shareAppButton = findViewById<Button>(R.id.activity_settings_share_app_button)
-
         val sendEMailToSupportButton = findViewById<Button>(R.id.activity_settings_mail_to_support_button)
+        val usersAgreementButton = findViewById<Button>(R.id.activity_settings_user_agree_button)
 
         backToMainMenu.setOnClickListener {
             finish()
@@ -24,13 +24,13 @@ class SettingsActivity : AppCompatActivity() {
         shareAppButton.setOnClickListener {
 
             val shareAppDisplay = Intent(Intent.ACTION_SEND)
-            shareAppDisplay.data = Uri.parse("https:")
-            shareAppDisplay.putExtra(Intent.EXTRA_TEXT, "https://practicum.yandex.ru/android-developer/?from=catalog")
             shareAppDisplay.type = "text/plain"
+            shareAppDisplay.putExtra(Intent.EXTRA_TEXT, "https://practicum.yandex.ru/android-developer/?from=catalog")
             startActivity(shareAppDisplay)
         }
 
         sendEMailToSupportButton.setOnClickListener{
+
             val mailToAddress = arrayOf("kondratyev_dv@mail.ru")
             val mailSubject = "Сообщение разработчикам и разработчицам приложения Playlist Maker"
             val mailText = "Спасибо разработчикам и разработчицам за крутое приложение!"
@@ -41,6 +41,14 @@ class SettingsActivity : AppCompatActivity() {
             sendEmailToSupportIntent.putExtra(Intent.EXTRA_TEXT, mailText)
             sendEmailToSupportIntent.putExtra(Intent.EXTRA_SUBJECT, mailSubject)
             startActivity(sendEmailToSupportIntent)
+        }
+
+        usersAgreementButton.setOnClickListener {
+            val urlAgreement = "https://yandex.ru/legal/practicum_offer/"
+            val  usersAgreementIntent = Intent(Intent.ACTION_VIEW)
+            usersAgreementIntent.data = Uri.parse(urlAgreement)
+            startActivity(usersAgreementIntent)
+
         }
 
 

@@ -4,10 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".SearchActivity">
+
     <TextView
         android:id="@+id/activity_search_header"
-        android:text = "@string/search"
-        style="@style/activity_settings_header"/>
+        style="@style/activity_settings_header"
+        android:text="@string/search" />
+
+    <LinearLayout style="@style/activity_search_linearLayout_search">
+
+        <ImageView style="@style/activity_search_imageView_searchIcon" />
+
+        <EditText style="@style/activity_search_EditText_search" />
+
+    </LinearLayout>
 
 </LinearLayout>

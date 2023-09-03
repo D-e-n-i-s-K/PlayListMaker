@@ -101,5 +101,39 @@
     </style>
 
 
+    <style name="activity_search_linearLayout_search">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:background">@drawable/rounded_border_edittext</item>
+        <item name="android:layout_marginLeft">@dimen/activity_search_linearLayout_search_marginLeft</item>
+        <item name="android:layout_marginTop">@dimen/activity_search_linearLayout_search_marginTop</item>
+        <item name="android:layout_marginRight">@dimen/activity_search_linearLayout_search_marginRight</item>
+        <item name="android:layout_marginBottom">@dimen/activity_search_linearLayout_search_marginBottom</item>
+    </style>
+
+    <style name="activity_search_imageView_searchIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/plm_light_gray</item>
+        <item name="android:src">@drawable/search_icon</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:contentDescription">@string/search</item>
+        <item name="android:tint">@color/plm_gray</item>
+        <item name="android:paddingLeft">@dimen/activity_search_imageView_searchIcon_paddingLeft</item>
+        <item name="android:paddingRight">@dimen/activity_search_imageView_searchIcon_paddingRight</item>
+    </style>
+
+    <style name="activity_search_EditText_search">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:hint">@string/search_editText_hint_text</item>
+        <item name="android:paddingTop">@dimen/activity_search_editText_paddingTop</item>
+        <item name="android:paddingBottom">@dimen/activity_search_editText_editText_paddingBottom</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:inputType">text</item>
+    </style>
 
 </resources>

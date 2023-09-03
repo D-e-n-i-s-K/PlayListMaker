@@ -12,5 +12,6 @@
     <color name="plm_blue">#3772E7</color>
     <color name="plm_white">#FFFFFF</color>
     <color name="plm_gray">#AEAFB4</color>
+    <color name="plm_light_gray">#E6E8EB</color>
 
 </resources>

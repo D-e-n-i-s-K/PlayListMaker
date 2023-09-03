@@ -10,4 +10,6 @@
     <string name="mail_to_support">Написать в поддержку</string>
     <string name="user_agree">Пользовательское соглашение</string>
 
+    <string name="search_editText_hint_text">Поиск</string>
+
 </resources>

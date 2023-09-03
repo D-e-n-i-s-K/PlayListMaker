@@ -39,4 +39,14 @@
     <dimen name="activity_settings_switchButton_textSize">16sp</dimen>
     <integer name="activity_settings_switchButton_fontWeight">500</integer>
 
+    <dimen name="activity_search_editText_paddingTop">8dp</dimen>
+    <dimen name="activity_search_editText_editText_paddingBottom">8dp</dimen>
+    <dimen name="activity_search_imageView_searchIcon_paddingLeft">14dp</dimen>
+    <dimen name="activity_search_imageView_searchIcon_paddingRight">4dp</dimen>
+
+    <dimen name="activity_search_linearLayout_search_marginLeft">16dp</dimen>
+    <dimen name="activity_search_linearLayout_search_marginTop">8dp</dimen>
+    <dimen name="activity_search_linearLayout_search_marginRight">16dp</dimen>
+    <dimen name="activity_search_linearLayout_search_marginBottom">8dp</dimen>
+
 </resources>

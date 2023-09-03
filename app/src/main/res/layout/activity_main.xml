@@ -19,8 +19,7 @@
         android:id="@+id/activity_main_button_media"
         android:text="@string/media"
         app:icon="@drawable/media_icon"
-        style="@style/activity_main_button"
-        />
+        style="@style/activity_main_button"/>
 
     <Button
         android:id="@+id/activity_main_button_settings"

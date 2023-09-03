@@ -6,7 +6,7 @@
     <TextView
         android:id="@+id/activity_setting_header"
         android:text = "@string/settings"
-        style="@style/activity_header"/>
+        style="@style/activity_settings_header"/>
 
     <androidx.appcompat.widget.SwitchCompat
         style="@style/activity_settings_switchButton"

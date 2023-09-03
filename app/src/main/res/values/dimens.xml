@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="activity_main_button_cornerRadius">16dp</dimen>
-    <dimen name="activity_main_button_textSize">26sp</dimen>
+    <dimen name="activity_main_button_textSize">22sp</dimen>
     <dimen name="activity_main_button_paddingHorizontal">16dp</dimen>
+    <integer name="activity_main_button_fontWeight">500</integer>
 
-    <dimen name="activity_main_header_textSize">26sp</dimen>
+    <dimen name="activity_main_header_textSize">22sp</dimen>
     <dimen name="activity_main_header_paddingTop">10dp</dimen>
     <dimen name="activity_main_header_paddingBottom">12dp</dimen>
     <dimen name="activity_main_header_layout_marginRight">52dp</dimen>
     <dimen name="activity_main_header_layout_marginTop">4dp</dimen>
     <dimen name="activity_main_header_layout_marginBottom">24dp</dimen>
+    <integer name="activity_main_header_fontWeight">500</integer>
 
     <dimen name="activity_main_body_paddingHorizontal">16dp</dimen>
     <dimen name="activity_main_body_paddingEnd">18dp</dimen>
@@ -23,16 +25,18 @@
     <dimen name="activity_setting_button_icon_size">24dp</dimen>
     <integer name="activity_setting_button_letterSpacing_0">0</integer>
 
-    <dimen name="activity_header_drawablePadding">12dp</dimen>
-    <dimen name="activity_header_paddingStart">16dp</dimen>
-    <dimen name="activity_header_paddingTop">14dp</dimen>
-    <dimen name="activity_header_paddingBottom">16dp</dimen>
-    <dimen name="activity_header_textSize">26sp</dimen>
+    <dimen name="activity_settings_header_drawablePadding">12dp</dimen>
+    <dimen name="activity_settings_header_paddingStart">16dp</dimen>
+    <dimen name="activity_settings_header_paddingTop">14dp</dimen>
+    <dimen name="activity_settings_header_paddingBottom">16dp</dimen>
+    <dimen name="activity_settings_header_textSize">22sp</dimen>
+    <integer name="activity_settings_header_fontWeight">500</integer>
 
     <dimen name="activity_settings_switchButton_layout_marginTop">21dp</dimen>
     <dimen name="activity_settings_switchButton_marginBottom">21dp</dimen>
     <dimen name="activity_settings_switchButton_paddingStart">16dp</dimen>
     <dimen name="activity_settings_switchButton_paddingEnd">12dp</dimen>
     <dimen name="activity_settings_switchButton_textSize">16sp</dimen>
+    <integer name="activity_settings_switchButton_fontWeight">500</integer>
 
 </resources>

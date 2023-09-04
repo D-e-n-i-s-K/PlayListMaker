@@ -136,4 +136,14 @@
         <item name="android:inputType">text</item>
     </style>
 
+    <style name="activity_search_imageView_cancelIcon">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:backgroundTint">@color/plm_light_gray</item>
+        <item name="android:src">@drawable/cancel_icon</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:contentDescription"></item>
+        <item name="android:tint">@color/plm_gray</item>
+    </style>
+
 </resources>

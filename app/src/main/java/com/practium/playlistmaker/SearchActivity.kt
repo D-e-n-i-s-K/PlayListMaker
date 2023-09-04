@@ -12,6 +12,28 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
 class SearchActivity : AppCompatActivity() {
+
+    companion object {
+        const val SEARCH_TEXT = "SEARCH_TEXT"
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        var searchEditText = findViewById<EditText>(R.id.search_editeText)
+         outState.putString(SEARCH_TEXT, searchEditText.text.toString())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        var savedSearchText = savedInstanceState.getString(SEARCH_TEXT,"Пустота")
+        var searchEditText = findViewById<EditText>(R.id.search_editeText)
+        searchEditText.setText(savedSearchText)
+
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)

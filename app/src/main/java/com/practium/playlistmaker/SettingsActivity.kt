@@ -1,11 +1,13 @@
 package com.practium.playlistmaker
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import android.widget.Toast
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,31 +25,60 @@ class SettingsActivity : AppCompatActivity() {
 
         shareAppButton.setOnClickListener {
 
-            val shareAppDisplay = Intent(Intent.ACTION_SEND)
-            shareAppDisplay.type = "text/plain"
-            shareAppDisplay.putExtra(Intent.EXTRA_TEXT, "https://practicum.yandex.ru/android-developer/?from=catalog")
-            startActivity(shareAppDisplay)
+            val shareAppDisplayIntent = Intent(Intent.ACTION_SEND)
+            shareAppDisplayIntent.type = "text/plain"
+            val androidDeveloperUrl = getString(R.string.android_developer_url)
+            shareAppDisplayIntent.putExtra(Intent.EXTRA_TEXT, androidDeveloperUrl)
+
+            try {
+                startActivity(shareAppDisplayIntent)
+            } catch (e: ActivityNotFoundException) {
+                val text = getString(R.string.startActivity_shareAppDisplayIntent_catch_message)
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+            }
         }
 
         sendEMailToSupportButton.setOnClickListener{
 
-            val mailToAddress = arrayOf("kondratyev_dv@mail.ru")
-            val mailSubject = "Сообщение разработчикам и разработчицам приложения Playlist Maker"
-            val mailText = "Спасибо разработчикам и разработчицам за крутое приложение!"
+            val testMailAddress = getString(R.string.test_mail_address)
+
+            val mailToAddress = arrayOf(testMailAddress)
+            val mailSubject = getString(R.string.support_mail_subject)
+            val mailText = getString(R.string.support_mail_text)
 
             val sendEmailToSupportIntent = Intent(Intent.ACTION_SENDTO)
             sendEmailToSupportIntent.data = Uri.parse("mailto:")
             sendEmailToSupportIntent.putExtra(Intent.EXTRA_EMAIL, mailToAddress)
             sendEmailToSupportIntent.putExtra(Intent.EXTRA_TEXT, mailText)
             sendEmailToSupportIntent.putExtra(Intent.EXTRA_SUBJECT, mailSubject)
-            startActivity(sendEmailToSupportIntent)
+
+            try {
+                startActivity(sendEmailToSupportIntent)
+            } catch (e: ActivityNotFoundException) {
+                val text = getString(R.string.startActivity_sendEmailToSupportIntent_catch_message)
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+            }
+
         }
 
         usersAgreementButton.setOnClickListener {
-            val urlAgreement = "https://yandex.ru/legal/practicum_offer/"
+            val urlAgreement = getString(R.string.user_agreement_url)
             val  usersAgreementIntent = Intent(Intent.ACTION_VIEW)
             usersAgreementIntent.data = Uri.parse(urlAgreement)
-            startActivity(usersAgreementIntent)
+
+
+            try {
+                startActivity(usersAgreementIntent)
+            } catch (e: ActivityNotFoundException) {
+                val text = getString(R.string.startActivity_usersAgreementIntent_catch_message)
+                val duration = Toast.LENGTH_SHORT
+                val toast = Toast.makeText(applicationContext, text, duration)
+                toast.show()
+            }
 
         }
 

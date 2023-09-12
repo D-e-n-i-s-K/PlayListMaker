@@ -13,26 +13,11 @@ import androidx.appcompat.app.AppCompatActivity
 
 class SearchActivity : AppCompatActivity() {
 
-    companion object {
-        const val SEARCH_TEXT = "SEARCH_TEXT"
-    }
+//    companion object {
+//        const val SEARCH_TEXT = "SEARCH_TEXT"
+//    }
 
-    override fun onSaveInstanceState(outState: Bundle) {
-        super.onSaveInstanceState(outState)
-
-        var searchEditText = findViewById<EditText>(R.id.search_editeText)
-         outState.putString(SEARCH_TEXT, searchEditText.text.toString())
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-
-        var savedSearchText = savedInstanceState.getString(SEARCH_TEXT,"Пустота")
-        var searchEditText = findViewById<EditText>(R.id.search_editeText)
-        searchEditText.setText(savedSearchText)
-
-    }
-
+    lateinit var searchText: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,29 +28,30 @@ class SearchActivity : AppCompatActivity() {
 
         val searchEditText = findViewById<EditText>(R.id.search_editeText)
 
-        cancelButton.setOnClickListener{
+        cancelButton.setOnClickListener {
             searchEditText.text.clear()
 
-            // Only runs if there is a view that is currently focused
+            // Покажем клавиатуру только если в фокусе поле Поиска
             this.currentFocus?.let { view ->
-                val imm = getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
-                imm?.hideSoftInputFromWindow(view.windowToken, 0)
-
+                val inputMethodManager =
+                    getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
+                inputMethodManager?.hideSoftInputFromWindow(view.windowToken, 0)
             }
         }
 
-        val searchEditTextWatcher = object : TextWatcher{
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+        val searchEditTextWatcher = object : TextWatcher {
 
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
                 cancelButton.visibility = clearCancelVisibility(s)
+                if (!s.isNullOrEmpty()) {
+                    searchText = s.toString()
+                }
             }
 
             override fun afterTextChanged(s: Editable?) {
-
             }
 
         }
@@ -75,13 +61,34 @@ class SearchActivity : AppCompatActivity() {
         backToMainActivityButton.setOnClickListener {
             finish()
         }
-
-
     }
-    fun clearCancelVisibility(s: CharSequence?): Int{
 
-        return if (s.isNullOrEmpty()) {View.GONE}
-        else {View.VISIBLE}
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        var searchEditText = findViewById<EditText>(R.id.search_editeText)
+        searchText = searchEditText.text.toString()
+
+//        outState.putString(SEARCH_TEXT, searchEditText.text.toString())
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        var searchEditText = findViewById<EditText>(R.id.search_editeText)
+        searchEditText.setText(searchText)
+
+//      var savedSearchText = savedInstanceState.getString(SEARCH_TEXT, "")
+//      searchEditText.setText(savedSearchText)
+    }
+
+    fun clearCancelVisibility(s: CharSequence?): Int {
+
+        return if (s.isNullOrEmpty()) {
+            View.GONE
+        } else {
+            View.VISIBLE
+        }
 
     }
 }

@@ -16,13 +16,20 @@
 
         <ImageView style="@style/activity_search_imageView_searchIcon" />
 
-        <EditText
-            android:id="@+id/search_editeText"
-            style="@style/activity_search_EditText_search" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <ImageButton
-            android:id="@+id/cancelButton"
-            style="@style/activity_search_imageView_cancelIcon" />
+            <EditText
+                android:id="@+id/search_editeText"
+                style="@style/activity_search_EditText_search"
+                tools:text="@string/search_test_input"
+                />
+            <ImageButton
+                android:id="@+id/cancelButton"
+                style="@style/activity_search_imageView_cancelIcon" />
+        </FrameLayout>
+
     </LinearLayout>
 
 </LinearLayout>

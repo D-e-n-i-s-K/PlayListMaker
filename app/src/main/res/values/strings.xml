@@ -16,7 +16,7 @@
     <string name="android_developer_url">https://practicum.yandex.ru/android-developer/?from=catalog</string>
 
     <string name="startActivity_shareAppDisplayIntent_catch_message">Что то пошло не так, обратесь в службу поддержки</string>
-    <string name="startActivity_sendEmailToSupportIntent_catch_message">тсуствует приложение для отправки электронной почты, установите приложение, попробуйте заново</string>
+    <string name="startActivity_sendEmailToSupportIntent_catch_message">Отсуствует приложение для отправки электронной почты, установите приложение, попробуйте заново</string>
     <string name="startActivity_usersAgreementIntent_catch_message">Отсуствует приложение для просмотра Веб-страниц, установите приложение, попробуйте заново</string>
 
     <string name="user_agreement_url">https://yandex.ru/legal/practicum_offer/</string>

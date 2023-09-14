@@ -13,11 +13,12 @@ import androidx.appcompat.app.AppCompatActivity
 
 class SearchActivity : AppCompatActivity() {
 
-//    companion object {
-//        const val SEARCH_TEXT = "SEARCH_TEXT"
-//    }
+    companion object {
+        const val SEARCH_TEXT = "SEARCH_TEXT"
+    }
 
-    lateinit var searchText: String
+    private lateinit var searchText: String
+    private var searchEditText: EditText? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +27,10 @@ class SearchActivity : AppCompatActivity() {
         val cancelButton = findViewById<ImageView>(R.id.cancelButton)
         cancelButton.visibility = View.GONE
 
-        val searchEditText = findViewById<EditText>(R.id.search_editeText)
+        searchEditText = findViewById<EditText>(R.id.search_editeText)
 
         cancelButton.setOnClickListener {
-            searchEditText.text.clear()
+            searchEditText?.text?.clear()
 
             // Покажем клавиатуру только если в фокусе поле Поиска
             this.currentFocus?.let { view ->
@@ -46,16 +47,13 @@ class SearchActivity : AppCompatActivity() {
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 cancelButton.visibility = clearCancelVisibility(s)
-                if (!s.isNullOrEmpty()) {
-                    searchText = s.toString()
-                }
             }
 
             override fun afterTextChanged(s: Editable?) {
             }
 
         }
-        searchEditText.addTextChangedListener(searchEditTextWatcher)
+        searchEditText?.addTextChangedListener(searchEditTextWatcher)
 
         val backToMainActivityButton = findViewById<TextView>(R.id.activity_search_header)
         backToMainActivityButton.setOnClickListener {
@@ -65,21 +63,15 @@ class SearchActivity : AppCompatActivity() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-
-        var searchEditText = findViewById<EditText>(R.id.search_editeText)
-        searchText = searchEditText.text.toString()
-
-//        outState.putString(SEARCH_TEXT, searchEditText.text.toString())
+        searchText = searchEditText?.text.toString()
+        outState.putString(SEARCH_TEXT, searchText)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+        searchText = savedInstanceState.getString(SEARCH_TEXT,"")
+        searchEditText?.setText(searchText)
 
-        var searchEditText = findViewById<EditText>(R.id.search_editeText)
-        searchEditText.setText(searchText)
-
-//      var savedSearchText = savedInstanceState.getString(SEARCH_TEXT, "")
-//      searchEditText.setText(savedSearchText)
     }
 
     fun clearCancelVisibility(s: CharSequence?): Int {

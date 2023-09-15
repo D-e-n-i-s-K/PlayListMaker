@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SearchActivity">
+
+    <TextView
+        android:id="@+id/activity_search_header"
+        style="@style/activity_settings_header"
+        android:text="@string/search" />
+
+    <LinearLayout style="@style/activity_search_linearLayout_search">
+
+        <ImageView style="@style/activity_search_imageView_searchIcon" />
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/search_editeText"
+                style="@style/activity_search_EditText_search"
+                tools:text="@string/search_test_input"
+                />
+            <ImageButton
+                android:id="@+id/cancelButton"
+                style="@style/activity_search_imageView_cancelIcon" />
+        </FrameLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

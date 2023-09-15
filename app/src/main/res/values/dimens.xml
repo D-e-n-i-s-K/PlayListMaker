@@ -49,4 +49,38 @@
     <dimen name="activity_search_linearLayout_search_marginRight">16dp</dimen>
     <dimen name="activity_search_linearLayout_search_marginBottom">8dp</dimen>
 
+
+    <integer name="track_name_textFontWeight">400</integer>
+    <dimen name="track_name_textSize">16sp</dimen>
+    <integer name="track_name_maxLines">1</integer>
+
+    <dimen name="artist_name_layout_width">0dp</dimen>
+    <integer name="artist_name_layout_weight">1</integer>
+    <integer name="artist_name_maxLines">1</integer>
+    <integer name="artist_name_textFontWeight">400</integer>
+    <dimen name="artist_name_textSize">11sp</dimen>
+
+    <integer name="track_time_layout_weight">1</integer>
+    <integer name="track_time_maxLines">1</integer>
+    <integer name="track_time_textFontWeight">400</integer>
+    <dimen name="track_time_textSize">11sp</dimen>
+
+    <dimen name="tack_arrow_layout_weight">0</dimen>
+    <dimen name="tack_arrow_layout_marginTop">18dp</dimen>
+    <dimen name="tack_arrow_layout_marginRight">12dp</dimen>
+    <dimen name="tack_arrow_layout_marginBottom">19dp</dimen>
+
+    <integer name="artwork_layout_weight">0</integer>
+    <dimen name="artwork_layout_marginLeft">13dp</dimen>
+    <dimen name="artwork_layout_marginTop">8dp</dimen>
+
+    <dimen name="separator_layout_width">13dp</dimen>
+    <dimen name="separator_layout_height">13dp</dimen>
+    <dimen name="separator_layout_weight">0</dimen>
+
+    <dimen name="track_name_artist_time_layout_weight">1</dimen>
+    <dimen name="track_name_artist_time_layout_marginLeft">8dp</dimen>
+    <dimen name="track_name_artist_time_layout_marginTop">14dp</dimen>
+
+
 </resources>

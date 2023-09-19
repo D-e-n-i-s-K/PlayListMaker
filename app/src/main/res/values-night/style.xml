@@ -148,6 +148,7 @@
         <item name="android:tint">@color/plm_black</item>
     </style>
 
+
     <style name="track_name">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -159,8 +160,26 @@
         <item name="android:maxLines">@integer/track_name_maxLines</item>
     </style>
 
+    <style name="artwork">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">@integer/artwork_layout_weight</item>
+        <item name="android:layout_marginLeft">@dimen/artwork_layout_marginLeft</item>
+        <item name="android:layout_marginTop">@dimen/artwork_layout_marginTop</item>
+        <item name="android:src">@drawable/placeholder</item>
+    </style>
+
+    <style name="track_name_artist_time">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">@dimen/track_name_artist_time_layout_weight</item>
+        <item name="android:layout_marginLeft">@dimen/track_name_artist_time_layout_marginLeft</item>
+        <item name="android:layout_marginTop">@dimen/track_name_artist_time_layout_marginTop</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
     <style name="artist_name">
-        <item name="android:layout_width">@dimen/artist_name_layout_width</item>
+        <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_weight">@integer/artist_name_layout_weight</item>
         <item name="android:ellipsize">end</item>
@@ -169,6 +188,14 @@
         <item name="android:textColor">@color/plm_white</item>
         <item name="android:textFontWeight">@integer/artist_name_textFontWeight</item>
         <item name="android:textSize">@dimen/artist_name_textSize</item>
+    </style>
+
+    <style name="separator">
+        <item name="android:layout_width">@dimen/separator_layout_width</item>
+        <item name="android:layout_height">@dimen/separator_layout_height</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:tint">@color/plm_white</item>
+        <item name="android:src">@drawable/ic</item>
     </style>
 
     <style name="track_time">
@@ -186,33 +213,11 @@
     <style name="tack_arrow">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">@dimen/tack_arrow_layout_weight</item>
         <item name="android:layout_marginTop">@dimen/tack_arrow_layout_marginTop</item>
         <item name="android:layout_marginRight">@dimen/tack_arrow_layout_marginRight</item>
         <item name="android:layout_marginBottom">@dimen/tack_arrow_layout_marginBottom</item>
-        <item name="android:src">@drawable/arrow_forward_icon</item>
         <item name="android:tint">@color/plm_white</item>
+        <item name="android:src">@drawable/arrow_forward_icon</item>
     </style>
-
-    <style name="artwork">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_weight">@integer/artwork_layout_weight</item>
-        <item name="android:layout_marginLeft">@dimen/artwork_layout_marginLeft</item>
-        <item name="android:layout_marginTop">@dimen/artwork_layout_marginTop</item>
-        <item name="android:src">@drawable/placeholder</item>
-    </style>
-
-    <style name="separator">
-        <item name="android:layout_width">@dimen/separator_layout_width</item>
-        <item name="android:layout_height">@dimen/separator_layout_height</item>
-        <item name="android:layout_weight">@dimen/separator_layout_weight</item>
-        <item name="android:layout_gravity">center</item>
-        <item name="android:src">@drawable/ic</item>
-        <item name="android:tint">@color/white</item>
-
-    </style>
-
-
 
 </resources>

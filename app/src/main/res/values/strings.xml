@@ -56,6 +56,12 @@
     <string name="track_artist_tools">Исполнитель Исполнитель Исполнитель Исполнитель Исполнитель Исполнитель Исполнитель Исполнитель Исполнитель Исполнитель Исполнитель</string>
     <string name="track_time_tools">0:00</string>
 
+    <string name="iTunes_api_url">https://itunes.apple.com/</string>
+    <string name="iTunes_GET_request">/search?entity=song</string>
+    <string name="iTunes_query_param">term</string>
+
+    <string name="searchNothing">Ничего не нашлось</string>
+    <string name="noInternet">Проблемы со связью \n \n Загрузка не удалась. Проверьте подключение к интернету</string>
 
 
 </resources>

@@ -220,4 +220,20 @@
     </style>
 
 
+    <style name="placeHolderButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="cornerRadius">54dp</item>
+        <item name="textFillColor">@color/plm_white</item>
+        <item name="backgroundTint">@color/plm_black</item>
+    </style>
+    <style name="placeBackNote">
+        <item name="android:src">@drawable/backnoteblack</item>
+    </style>
+    <style name="placeHolderFrontNote">
+        <item name="android:src">@drawable/frontnoteblack</item>
+    </style>
+    <style name="placeHolderText">
+        <item name="textFillColor">@color/plm_black</item>
+    </style>
+
+
 </resources>

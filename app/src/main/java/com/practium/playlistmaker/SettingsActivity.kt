@@ -2,12 +2,14 @@ package com.practium.playlistmaker
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
+import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.widget.SwitchCompat
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,6 +20,20 @@ class SettingsActivity : AppCompatActivity() {
         val shareAppButton = findViewById<Button>(R.id.activity_settings_share_app_button)
         val sendEMailToSupportButton = findViewById<Button>(R.id.activity_settings_mail_to_support_button)
         val usersAgreementButton = findViewById<Button>(R.id.activity_settings_user_agree_button)
+        val themeSwitcher = findViewById<SwitchCompat>(R.id.themeSwitcher)
+
+        themeSwitcher.isChecked = (applicationContext as App).darkTheme
+
+        themeSwitcher.setOnCheckedChangeListener {  switcher, checked ->
+            (applicationContext as App).switchTheme(checked)
+
+            val userPreferences = SharedPreferencesConstants.USER_PREFERENCES
+            val sharedPreferences = getSharedPreferences(userPreferences, MODE_PRIVATE)
+            sharedPreferences.edit()
+                .putBoolean(SharedPreferencesConstants.DARK_THEME_KEY, checked)
+                .apply()
+
+        }
 
         backToMainMenu.setOnClickListener {
             finish()

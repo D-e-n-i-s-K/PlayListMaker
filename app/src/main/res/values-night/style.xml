@@ -220,4 +220,19 @@
         <item name="android:src">@drawable/arrow_forward_icon</item>
     </style>
 
+    <style name="placeHolderButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="cornerRadius">54dp</item>
+        <item name="textFillColor">@color/plm_black</item>
+        <item name="backgroundTint">@color/plm_white</item>
+    </style>
+    <style name="placeBackNote">
+        <item name="android:src">@drawable/backnotewhite</item>
+    </style>
+    <style name="placeHolderFrontNote">
+        <item name="android:src">@drawable/frontnotewhite</item>
+    </style>
+    <style name="placeHolderText">
+        <item name="textFillColor">@color/plm_white</item>
+    </style>
+
 </resources>

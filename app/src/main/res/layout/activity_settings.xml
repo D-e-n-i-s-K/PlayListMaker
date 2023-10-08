@@ -9,6 +9,7 @@
         style="@style/activity_settings_header"/>
 
     <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/themeSwitcher"
         style="@style/activity_settings_switchButton"
     />
 

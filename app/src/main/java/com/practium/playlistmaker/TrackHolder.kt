@@ -19,7 +19,6 @@ class TrackHolder(private val view: View) : RecyclerView.ViewHolder(view){
     private val artwork : ImageView = view.findViewById(R.id.artwork)
 
     fun bind(model: Track){
-
         trackName.text = model.trackName
         artistName.text = model.artistName
         trackTime.text = milliSecToMMSS(model.trackTimeMillis) // model.trackTimeMillis.toString()
@@ -29,7 +28,6 @@ class TrackHolder(private val view: View) : RecyclerView.ViewHolder(view){
             .centerCrop()
             .transform(RoundedCorners(dpToPix(2F, view.context)))
             .into(artwork)
-
     }
 
     private fun dpToPix(dp: Float, context: Context): Int {

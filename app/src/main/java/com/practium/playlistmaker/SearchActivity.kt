@@ -262,7 +262,6 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
     }
 
 
-
     override fun onTrackItemClickListener(track: Track) {
 
         // добавление в историю поиска по нажатию на эл. списка

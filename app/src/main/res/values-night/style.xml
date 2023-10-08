@@ -264,4 +264,49 @@
         <item name="android:layout_marginRight">16dp</item>
     </style>
 
+    <style name="player_track_info_title">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textColor">@color/plm_gray</item>
+        <item name="android:paddingTop">9dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+        <item name="layout_constraintStart_toStartOf">@id/leftGuideline</item>
+    </style>
+
+    <style name="player_track_info_value">
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontWeight">400</item>
+        <item name="android:textColor">@color/plm_white</item>
+        <item name="android:paddingTop">9dp</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:fontFamily">@font/ys_display_regular</item>
+        <item name="layout_constraintEnd_toEndOf">@id/rightGuideline</item>
+    </style>
+
+    <style name="player_track_name">
+        <item name="android:textColor">@color/plm_white</item>
+    </style>
+
+    <style name="player_artis_name">
+        <item name="android:textColor">@color/plm_white</item>
+    </style>
+
+    <style name="player_play_button">
+        <item name="android:tint">@color/plm_white</item>
+    </style>
+
+    <style name="player_like_button">
+        <item name="android:tint">@color/plm_white</item>
+    </style>
+
+    <style name="player_add_button">
+        <item name="android:tint">@color/plm_white</item>
+    </style>
+
+    <style name="player_back_arrow">
+        <item name="android:tint">@color/plm_white</item>
+    </style>
+
+
 </resources>

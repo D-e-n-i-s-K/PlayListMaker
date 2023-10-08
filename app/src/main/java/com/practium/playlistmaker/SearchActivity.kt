@@ -1,12 +1,10 @@
 package com.practium.playlistmaker
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.os.Parcel
-import android.os.Parcelable
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
@@ -14,14 +12,11 @@ import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.gson.Gson
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
@@ -270,9 +265,25 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
 
     override fun onTrackItemClickListener(track: Track) {
 
-        var trackSearchHistory = (application as App)
-        trackSearchHistory.addTrackToHistory(track)
-        trackSearchHistory.saveTrackHistory()
+        // добавление в историю поиска по нажатию на эл. списка
+        var app = (application as App)
+        app.addTrackToHistory(track)
+        app.saveTrackHistory()
+
+        // открыть акивити Player
+        val intentPlayer = Intent(this, Player::class.java)
+        intentPlayer.putExtra("trackName", track.trackName)
+        intentPlayer.putExtra("artistName", track.artistName)
+        intentPlayer.putExtra("trackTimeMillis", track.trackTimeMillis)
+        intentPlayer.putExtra("artworkUrl100", track.artworkUrl100)
+        intentPlayer.putExtra("artworkUrl512", track.getCoverArtwork())
+        intentPlayer.putExtra("collectionName", track.collectionName)
+        intentPlayer.putExtra("releaseDate", track.releaseDate)
+        intentPlayer.putExtra("primaryGenreName", track.primaryGenreName)
+        intentPlayer.putExtra("country", track.country)
+
+        startActivity(intentPlayer)
     }
+
 
 }

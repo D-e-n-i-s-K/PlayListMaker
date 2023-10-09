@@ -270,7 +270,7 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
         app.saveTrackHistory()
 
         // открыть акивити Player
-        val intentPlayer = Intent(this, Player::class.java)
+        val intentPlayer = Intent(this, PlayerActivity::class.java)
         intentPlayer.putExtra("trackName", track.trackName)
         intentPlayer.putExtra("artistName", track.artistName)
         intentPlayer.putExtra("trackTimeMillis", track.trackTimeMillis)

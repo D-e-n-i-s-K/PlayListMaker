@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Player">
+    tools:context=".PlayerActivity">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/leftGuideline"
@@ -153,7 +153,7 @@
         app:layout_constraintTop_toTopOf="@id/playButton"
         app:layout_constraintBottom_toBottomOf="@id/playButton"
         app:layout_constraintEnd_toEndOf="@id/rightGuideline"
-        android:layout_marginEnd="24dp"
+        android:layout_marginEnd="8dp"
         android:scaleType="centerCrop"
         style="@style/player_like_button" />
 
@@ -165,7 +165,7 @@
         app:layout_constraintTop_toTopOf="@id/playButton"
         app:layout_constraintBottom_toBottomOf="@id/playButton"
         app:layout_constraintStart_toStartOf="@id/leftGuideline"
-        android:layout_marginStart="24dp"
+        android:layout_marginStart="8dp"
         android:scaleType="centerCrop"
         style="@style/player_add_button" />
 
@@ -179,8 +179,8 @@
         app:layout_constraintBottom_toTopOf="@id/playButton"
         app:layout_constraintEnd_toEndOf="@id/rightGuideline"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="30dp"
         android:textSize="14sp"
         android:ellipsize="end"
@@ -200,8 +200,8 @@
         app:layout_constraintEnd_toEndOf="@id/rightGuideline"
         android:maxLines="1"
         app:layout_constraintHorizontal_bias="0"
-        android:layout_marginStart="24dp"
-        android:layout_marginEnd="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         android:layout_marginBottom="12dp"
         android:textSize="22sp"
         android:ellipsize="end"
@@ -216,7 +216,9 @@
         app:layout_constraintEnd_toEndOf="@id/rightGuideline"
         app:layout_constraintBottom_toTopOf="@id/trackName"
         app:layout_constraintTop_toBottomOf="@id/backArrow"
-        android:layout_marginBottom="24dp" />
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp" />
 
     <ImageView
         android:id="@+id/backArrow"
@@ -228,7 +230,6 @@
         android:paddingTop="12dp"
         android:paddingBottom="12dp"
         android:layout_marginBottom="30dp"
-        android:layout_marginLeft="16dp"
         style="@style/player_back_arrow" />
 
 

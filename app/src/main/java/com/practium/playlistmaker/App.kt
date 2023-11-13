@@ -1,9 +1,13 @@
 package com.practium.playlistmaker
 
 import android.app.Application
+import android.content.Context
 import android.content.SharedPreferences
+import android.util.TypedValue
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.gson.Gson
+import java.text.SimpleDateFormat
+import java.util.*
 
 class App : Application() {
 
@@ -76,12 +80,24 @@ class App : Application() {
         val json = getSharedPreferences().getString(
             SharedPreferencesConstants.SEARCH_KEY,
             null
-         ) ?: return emptyArray<Track>().toCollection(ArrayList())
+        ) ?: return emptyArray<Track>().toCollection(ArrayList())
 
         val trackArray = Gson().fromJson(json, Array<Track>::class.java).toCollection(ArrayList())
 
         trackArray.reverse()
         return trackArray
+    }
+
+    fun dpToPix(dp: Float, context: Context): Int {
+        return TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp,
+            context.resources.displayMetrics
+        ).toInt()
+    }
+
+    fun milliSecToMMSS(milliSeconds: Long): String {
+        return SimpleDateFormat("mm:ss", Locale.getDefault()).format(milliSeconds)
     }
 
 }

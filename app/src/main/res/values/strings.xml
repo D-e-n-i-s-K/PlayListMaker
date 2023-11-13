@@ -62,6 +62,11 @@
 
     <string name="searchNothing">Ничего не нашлось</string>
     <string name="noInternet">Проблемы со связью \n \n Загрузка не удалась. Проверьте подключение к интернету</string>
+    <string name="genreTitle">Жанр</string>
+    <string name="countryTitle">Страна</string>
+    <string name="yearTitle">Год</string>
+    <string name="albumTitle">Альбом</string>
+    <string name="durationTitle">Длительность</string>
 
 
 </resources>

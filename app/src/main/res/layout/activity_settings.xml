@@ -10,15 +10,13 @@
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/themeSwitcher"
-        style="@style/activity_settings_switchButton"
-    />
+        style="@style/activity_settings_switchButton" />
 
     <Button
         android:id="@+id/activity_settings_share_app_button"
         style="@style/activity_settings_button"
         android:text="@string/share_app"
-        app:icon="@drawable/share_app_icon"
-        />
+        app:icon="@drawable/share_app_icon" />
 
     <Button
         android:id="@+id/activity_settings_mail_to_support_button"

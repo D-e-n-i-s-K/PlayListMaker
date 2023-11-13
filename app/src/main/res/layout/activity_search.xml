@@ -19,14 +19,16 @@
         <ImageView style="@style/activity_search_imageView_searchIcon" />
 
         <FrameLayout
+            android:id="@+id/edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <EditText
                 android:id="@+id/search_editeText"
                 style="@style/activity_search_EditText_search"
-                tools:text="@string/search_test_input"
-                />
+                android:elegantTextHeight="true"
+                android:textCursorDrawable="@drawable/color_cursor"
+                tools:text="@string/search_test_input" />
             <ImageButton
                 android:id="@+id/clearSearchEditTextViewButton"
                 android:visibility="gone"

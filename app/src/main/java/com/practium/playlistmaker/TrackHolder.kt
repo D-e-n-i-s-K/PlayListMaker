@@ -13,12 +13,19 @@ import java.util.*
 
 class TrackHolder(private val view: View) : RecyclerView.ViewHolder(view){
 
-    private val trackName : TextView = view.findViewById(R.id.track_name)
-    private val artistName : TextView = view.findViewById(R.id.artist_name)
-    private val trackTime : TextView = view.findViewById(R.id.track_time)
-    private val artwork : ImageView = view.findViewById(R.id.artwork)
+    private val trackName: TextView = view.findViewById(R.id.track_name)
+    private val artistName: TextView = view.findViewById(R.id.artist_name)
+    private val trackTime: TextView = view.findViewById(R.id.track_time)
+    private val artwork: ImageView = view.findViewById(R.id.artwork)
 
-    fun bind(model: Track){
+    private var collectionName: String = ""
+    private var releaseDate: String = ""
+    private var primaryGenreName: String = ""
+    private var country: String = ""
+    private var artworkUrl512: String = ""
+
+
+    fun bind(model: Track) {
         trackName.text = model.trackName
         artistName.text = model.artistName
         trackTime.text = milliSecToMMSS(model.trackTimeMillis) // model.trackTimeMillis.toString()
@@ -28,6 +35,12 @@ class TrackHolder(private val view: View) : RecyclerView.ViewHolder(view){
             .centerCrop()
             .transform(RoundedCorners(dpToPix(2F, view.context)))
             .into(artwork)
+
+        collectionName = model.collectionName
+        releaseDate = model.releaseDate
+        primaryGenreName = model.primaryGenreName
+        country = model.country
+        artworkUrl512 = model.artworkUrl100.replaceAfterLast('/', "512x512bb.jpg")
     }
 
     private fun dpToPix(dp: Float, context: Context): Int {
@@ -37,5 +50,6 @@ class TrackHolder(private val view: View) : RecyclerView.ViewHolder(view){
     private fun milliSecToMMSS(milliSeconds: Long): String{
         return  SimpleDateFormat("mm:ss", Locale.getDefault()).format(milliSeconds)
     }
+
 
 }

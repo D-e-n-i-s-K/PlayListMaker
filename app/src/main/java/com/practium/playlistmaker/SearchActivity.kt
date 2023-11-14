@@ -3,12 +3,19 @@ package com.practium.playlistmaker
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -23,7 +30,10 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
 
     companion object {
         const val SEARCH_TEXT = "SEARCH_TEXT"
+        const val CLICK_DEBOUNCE_DELAY = 1000L
+        private const val SEARCH_DEBOUNCE_DELAY = 2000L
     }
+
 
     class SearchResultProblem {
         companion object {
@@ -57,12 +67,30 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
     private lateinit var trackListRecyclerView: RecyclerView
 
     private val adapter = TrackAdapter(this)
+    private lateinit var progressBar: ProgressBar
+
+    private var isClickAllowed = true
+    private val handler = Handler(Looper.getMainLooper())
+
+
+    private fun clickDebounce(): Boolean {
+        val current = isClickAllowed
+        if (isClickAllowed) {
+            isClickAllowed = false
+            handler.postDelayed({ isClickAllowed = true }, CLICK_DEBOUNCE_DELAY)
+        }
+        return current
+    }
+
+
+    private lateinit var activitySearch: LinearLayout
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         setContentView(R.layout.activity_search)
 
+        activitySearch = findViewById(R.id.activitySearch)
         refreshButton = findViewById(R.id.refreshButton)
         searchHistoryTitle = findViewById(R.id.searchHistoryTitle)
         clearHistoryButton = findViewById(R.id.clearHistoryButton)
@@ -73,6 +101,17 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
         clearSearchEditTextViewButton = findViewById(R.id.clearSearchEditTextViewButton)
         searchEditTextView = findViewById(R.id.search_editeText)
         trackListRecyclerView = findViewById(R.id.trackList)
+        progressBar = findViewById(R.id.progressBar)
+
+        val searchRunnable = Runnable {
+            var text = searchEditTextView!!.text.toString()
+            if (!text.isNullOrEmpty()) searchItunes(text, activitySearch)
+        }
+
+        fun searchDebounce() {
+            handler.removeCallbacks(searchRunnable)
+            handler.postDelayed(searchRunnable, SEARCH_DEBOUNCE_DELAY)
+        }
 
         clearHistoryButton.setOnClickListener {
             (application as App).clearTrackHistory()
@@ -82,7 +121,8 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
         }
 
         adapter.trackList = trackList
-        trackListRecyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+        trackListRecyclerView.layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         trackListRecyclerView.adapter = adapter
 
         searchEditTextView?.setOnEditorActionListener { view, actionId, _ ->
@@ -123,6 +163,8 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
                 clearSearchEditTextViewButton.visibility = clearCancelVisibility(s)
                 searchText = s.toString()
 
+                searchDebounce()
+
                 if (searchEditTextView?.hasFocus()!! && s?.isEmpty() == true) {
                     showHideHistory(true, searchEditTextView!!)
                     placeHolder.visibility = View.GONE
@@ -138,9 +180,6 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
         }
 
         refreshButton.setOnClickListener {
-
-
-
             if (!lastBadSearchText.isNullOrEmpty()){
                 searchEditTextView?.setText(lastBadSearchText)
                 searchItunes(lastBadSearchText, it)
@@ -181,6 +220,7 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
 
     private fun searchItunes(text: String, view: View) {
 
+        progressBar.visibility = View.VISIBLE
         showHideHistory(false, view)
 
         itunesApiService.search(searchText).enqueue(
@@ -189,6 +229,7 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
                     call: Call<TrackResponse>,
                     response: Response<TrackResponse>
                 ) {
+                    progressBar.visibility = View.GONE
                     if (response.code() == 200) {
                         if (response.body()?.resultCount?.toInt() !== 0) {
                             showSearchResult(response)
@@ -264,24 +305,29 @@ class SearchActivity() : AppCompatActivity(), OnTrackClickListener {
 
     override fun onTrackItemClickListener(track: Track) {
 
-        // добавление в историю поиска по нажатию на эл. списка
-        var app = (application as App)
-        app.addTrackToHistory(track)
-        app.saveTrackHistory()
+        if (clickDebounce()) {
 
-        // открыть акивити Player
-        val intentPlayer = Intent(this, PlayerActivity::class.java)
-        intentPlayer.putExtra("trackName", track.trackName)
-        intentPlayer.putExtra("artistName", track.artistName)
-        intentPlayer.putExtra("trackTimeMillis", track.trackTimeMillis)
-        intentPlayer.putExtra("artworkUrl100", track.artworkUrl100)
-        intentPlayer.putExtra("artworkUrl512", track.getCoverArtwork())
-        intentPlayer.putExtra("collectionName", track.collectionName)
-        intentPlayer.putExtra("releaseDate", track.releaseDate)
-        intentPlayer.putExtra("primaryGenreName", track.primaryGenreName)
-        intentPlayer.putExtra("country", track.country)
+            // добавление в историю поиска по нажатию на эл. списка
+            var app = (application as App)
+            app.addTrackToHistory(track)
+            app.saveTrackHistory()
 
-        startActivity(intentPlayer)
+            // открыть акивити Player
+            val intentPlayer = Intent(this, PlayerActivity::class.java)
+            intentPlayer.putExtra("trackName", track.trackName)
+            intentPlayer.putExtra("artistName", track.artistName)
+            intentPlayer.putExtra("trackTimeMillis", track.trackTimeMillis)
+            intentPlayer.putExtra("artworkUrl100", track.artworkUrl100)
+            intentPlayer.putExtra("artworkUrl512", track.getCoverArtwork())
+            intentPlayer.putExtra("collectionName", track.collectionName)
+            intentPlayer.putExtra("releaseDate", track.releaseDate)
+            intentPlayer.putExtra("primaryGenreName", track.primaryGenreName)
+            intentPlayer.putExtra("country", track.country)
+            intentPlayer.putExtra("previewUrl", track.previewUrl)
+
+            startActivity(intentPlayer)
+        }
+
     }
 
 

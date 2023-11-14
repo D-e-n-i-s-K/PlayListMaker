@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import java.text.SimpleDateFormat
-import java.util.*
+import java.util.Locale
 
 class TrackHolder(private val view: View) : RecyclerView.ViewHolder(view){
 
@@ -23,6 +23,7 @@ class TrackHolder(private val view: View) : RecyclerView.ViewHolder(view){
     private var primaryGenreName: String = ""
     private var country: String = ""
     private var artworkUrl512: String = ""
+    private var previewUrl: String = ""
 
 
     fun bind(model: Track) {
@@ -41,6 +42,7 @@ class TrackHolder(private val view: View) : RecyclerView.ViewHolder(view){
         primaryGenreName = model.primaryGenreName
         country = model.country
         artworkUrl512 = model.artworkUrl100.replaceAfterLast('/', "512x512bb.jpg")
+        previewUrl = model.previewUrl
     }
 
     private fun dpToPix(dp: Float, context: Context): Int {

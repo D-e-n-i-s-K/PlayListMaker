@@ -146,6 +146,18 @@
         style="@style/player_play_button" />
 
     <ImageView
+        android:id="@+id/pauseButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/playDurationValue"
+        app:layout_constraintStart_toStartOf="@id/leftGuideline"
+        app:layout_constraintEnd_toEndOf="@id/rightGuideline"
+        android:src="@drawable/pause_button"
+        android:layout_marginBottom="4dp"
+        style="@style/player_play_button"
+        android:visibility="gone" />
+
+    <ImageView
         android:id="@+id/likeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

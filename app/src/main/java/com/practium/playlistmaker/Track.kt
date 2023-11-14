@@ -11,7 +11,8 @@ data class Track(
     val releaseDate: String, // Год релиза трека
     val primaryGenreName: String, // Жанр трека
     val country: String, // Страна исполнителя
-    val artworkUrl512: String  // Ссылка на изображение обложки
+    val artworkUrl512: String,  // Ссылка на изображение обложки
+    val previewUrl: String  // Ссылка на отрывок
 
 
 ) {

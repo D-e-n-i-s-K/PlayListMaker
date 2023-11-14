@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
+    android:id="@+id/activitySearch"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,6 +14,7 @@
         android:imeOptions="actionDone"
         android:singleLine="true"
         android:text="@string/search" />
+
 
     <LinearLayout style="@style/activity_search_linearLayout_search">
 
@@ -29,6 +31,7 @@
                 android:elegantTextHeight="true"
                 android:textCursorDrawable="@drawable/color_cursor"
                 tools:text="@string/search_test_input" />
+
             <ImageButton
                 android:id="@+id/clearSearchEditTextViewButton"
                 android:visibility="gone"
@@ -36,6 +39,16 @@
         </FrameLayout>
 
     </LinearLayout>
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="112dp"
+        android:layout_marginBottom="508dp"
+        android:layout_gravity="center_horizontal"
+        android:indeterminateTint="@color/plm_blue"
+        android:visibility="gone" />
 
     <LinearLayout
         android:id="@+id/placeHolder"
@@ -45,7 +58,8 @@
         android:layout_marginTop="210dp"
         android:visibility="gone"
         android:layout_gravity="center">
-    <FrameLayout
+
+        <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center">

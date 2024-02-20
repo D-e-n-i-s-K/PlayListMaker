@@ -22,6 +22,7 @@ class PlayerActivity : AppCompatActivity() {
         private const val STATE_PREPARED = 1
         private const val STATE_PLAYING = 2
         private const val STATE_PAUSED = 3
+        private const val DELAY_MILLIS = 1000L
     }
 
     private var playerState = STATE_DEFAULT
@@ -34,7 +35,7 @@ class PlayerActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
 
-        var backToSearchMenuButton = findViewById<ImageView>(R.id.backArrow)
+        val backToSearchMenuButton = findViewById<ImageView>(R.id.backArrow)
 
         val trackNameView = findViewById<TextView>(R.id.trackName)
         val artistNameView = findViewById<TextView>(R.id.artistName)
@@ -70,8 +71,8 @@ class PlayerActivity : AppCompatActivity() {
         primaryGenreNameView.text = intent.getStringExtra("primaryGenreName")
         countryView.text = intent.getStringExtra("country")
 
-        var previewUrl = ""
-        previewUrl = intent.getStringExtra("previewUrl").toString()
+
+        val previewUrl = intent.getStringExtra("previewUrl").toString()
         preparePlayer(previewUrl)
 
         Glide.with(this)
@@ -137,7 +138,7 @@ class PlayerActivity : AppCompatActivity() {
                     SimpleDateFormat("mm:ss", Locale.getDefault()).format(currentPosition)
                         .toString()
                 )
-                mainThreadHandler?.postDelayed(this, 1000L)
+                mainThreadHandler?.postDelayed(this, DELAY_MILLIS)
             }
         }
     }

@@ -1,4 +1,4 @@
-package com.practium.playlistmaker
+package com.practium.playlistmaker.ui.player
 
 import android.media.MediaPlayer
 import android.os.Bundle
@@ -9,6 +9,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.practium.playlistmaker.App
+import com.practium.playlistmaker.R
+import com.practium.playlistmaker.domain.models.Track
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -59,19 +62,18 @@ class PlayerActivity : AppCompatActivity() {
             finish()
         }
 
+//        val track  = intent.getSerializableExtra("track") as Track
+//        track
+
         val intent = intent
         trackNameView.text = intent.getStringExtra("trackName")
         artistNameView.text = intent.getStringExtra("artistName")
-
         val trackTimeMillisLong = intent.getLongExtra("trackTimeMillis", 0)
         trackTimeMillis.text = app.milliSecToMMSS(trackTimeMillisLong)
-
         releaseDateView.text = intent.getStringExtra("releaseDate")?.substring(0, 4)
         collectionNameView.text = intent.getStringExtra("collectionName")
         primaryGenreNameView.text = intent.getStringExtra("primaryGenreName")
         countryView.text = intent.getStringExtra("country")
-
-
         val previewUrl = intent.getStringExtra("previewUrl").toString()
         preparePlayer(previewUrl)
 

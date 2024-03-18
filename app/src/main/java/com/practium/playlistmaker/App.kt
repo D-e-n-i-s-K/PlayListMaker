@@ -6,31 +6,23 @@ import android.content.SharedPreferences
 import android.util.TypedValue
 import androidx.appcompat.app.AppCompatDelegate
 import com.google.gson.Gson
+import com.practium.playlistmaker.data.SharedPreferences.SharedPreferencesConstants
+import com.practium.playlistmaker.domain.models.Track
 import java.text.SimpleDateFormat
 import java.util.*
 
 class App : Application() {
 
     var darkTheme = false
-
     private var trackHistory = ArrayList<Track>()
-
-
     override fun onCreate() {
         super.onCreate()
-
-        val darkTheme =
-            getSharedPreferences().getBoolean(SharedPreferencesConstants.DARK_THEME_KEY, darkTheme)
+        val darkTheme = getSharedPreferences().getBoolean(SharedPreferencesConstants.DARK_THEME_KEY, darkTheme)
         switchTheme(darkTheme)
-
         trackHistory = getTrackHistoryFromSharedPref()
-
     }
-
     fun switchTheme(darkThemeEnabled: Boolean) {
-
         darkTheme = darkThemeEnabled
-
         AppCompatDelegate.setDefaultNightMode(
             if (darkThemeEnabled) {
                 AppCompatDelegate.MODE_NIGHT_YES
@@ -38,18 +30,13 @@ class App : Application() {
                 AppCompatDelegate.MODE_NIGHT_NO
         )
     }
-
     private fun getSharedPreferences(): SharedPreferences {
         return getSharedPreferences(SharedPreferencesConstants.USER_PREFERENCES, MODE_PRIVATE)
     }
-
-
     fun addTrackToHistory(track: Track) {
-
         if (trackHistory.size > 9) {
             trackHistory.removeAt(0)
         }
-
         val trackHistoryIterator = trackHistory.iterator()
         while (trackHistoryIterator.hasNext()) {
             val trackInList = trackHistoryIterator.next()
@@ -57,7 +44,6 @@ class App : Application() {
                 trackHistoryIterator.remove()
             }
         }
-
         trackHistory.add(track)
     }
 

@@ -1,4 +1,4 @@
-package com.practium.playlistmaker
+package com.practium.playlistmaker.data.SharedPreferences
 
 class SharedPreferencesConstants {
     companion object {

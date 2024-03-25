@@ -1,3 +1,4 @@
+/*
 package com.practium.playlistmaker.ui.player
 
 import android.media.MediaPlayer
@@ -10,41 +11,33 @@ import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.practium.playlistmaker.App
-import com.practium.playlistmaker.Creator
 import com.practium.playlistmaker.R
 import com.practium.playlistmaker.domain.models.Track
 import java.text.SimpleDateFormat
 import java.util.Locale
-import com.practium.playlistmaker.databinding.ActivityPlayerBinding
 
 
 class PlayerActivity : AppCompatActivity() {
 
     lateinit var playDurationValue: TextView
 
-    private lateinit var binding: ActivityPlayerBinding
     companion object {
-//        private const val STATE_DEFAULT = 0
-//        private const val STATE_PREPARED = 1
-//        private const val STATE_PLAYING = 2
-//        private const val STATE_PAUSED = 3
-         private const val DELAY_MILLIS = 1000L
-     }
+        private const val STATE_DEFAULT = 0
+        private const val STATE_PREPARED = 1
+        private const val STATE_PLAYING = 2
+        private const val STATE_PAUSED = 3
+        private const val DELAY_MILLIS = 1000L
+    }
 
-//    private var playerState = STATE_DEFAULT
+    private var playerState = STATE_DEFAULT
     private lateinit var playButton: ImageView
-//    private var mediaPlayer = MediaPlayer()
+    private var mediaPlayer = MediaPlayer()
 
     private var mainThreadHandler: Handler? = null
 
-    private val handler = Handler(Looper.getMainLooper())
-
-    private var player = Creator.providePlayerInteractor()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_player)
-
-        binding = ActivityPlayerBinding.inflate(layoutInflater)
 
         val backToSearchMenuButton = findViewById<ImageView>(R.id.backArrow)
 
@@ -67,7 +60,6 @@ class PlayerActivity : AppCompatActivity() {
         val app = (application as App)
 
         backToSearchMenuButton.setOnClickListener {
-            player.release()
             finish()
         }
 
@@ -93,67 +85,47 @@ class PlayerActivity : AppCompatActivity() {
             .transform(RoundedCorners(app.dpToPix(2F, this)))
             .into(artworkUrl512View)
 
-        playButton.setOnClickListener {
-            player.playbackControl(
-                { startPlayer() },
-                { pausePlayer() }
-            ) }
+        playButton.setOnClickListener { playbackControl() }
 
     }
 
     private fun preparePlayer(previewUrl: String) {
-        player.preparePlayer(previewUrl,
-            {
-                playButton.setImageResource(R.drawable.play_button)
-            },
-            {
-                handler.removeCallbacks(updateTimer())
-                playButton.setImageResource(R.drawable.play_button)
-                binding.playDurationValue.text = "00:00"
-            })
-
+        mediaPlayer.setDataSource(previewUrl)
+        mediaPlayer.prepareAsync()
+        mediaPlayer.setOnPreparedListener {
+            playButton.isEnabled = true
+            playerState = STATE_PREPARED
+        }
+        mediaPlayer.setOnCompletionListener {
+            playButton.setImageDrawable(getDrawable(R.drawable.play_button))
+            playerState = STATE_PREPARED
+        }
     }
 
     private fun startPlayer() {
-        player.startPlayer {
-            playButton.setImageResource(R.drawable.pause_button)
-            handler.post(
-                updateTimer()
-            )
-        }
+        mediaPlayer.start()
+        playerState = STATE_PLAYING
+        mainThreadHandler?.post(updateTimer())
+        playButton.setImageDrawable(getDrawable(R.drawable.pause_button))
     }
 
     private fun pausePlayer() {
-        player.pausePlayer{
-            playButton.setImageResource(R.drawable.play_button)
-            handler.removeCallbacks(updateTimer())
+        mediaPlayer.pause()
+        playerState = STATE_PAUSED
+        playButton.setImageDrawable(getDrawable(R.drawable.play_button))
+    }
+
+    private fun playbackControl() {
+        when (playerState) {
+            STATE_PLAYING -> {
+                pausePlayer()
+            }
+
+            STATE_PREPARED, STATE_PAUSED -> {
+                startPlayer()
+            }
         }
     }
-    /*
-        private fun startPlayer() {
-            mediaPlayer.start()
-            playerState = STATE_PLAYING
-            mainThreadHandler?.post(updateTimer())
-            playButton.setImageDrawable(getDrawable(R.drawable.pause_button))
-        }
-
-        private fun pausePlayer() {
-            mediaPlayer.pause()
-            playerState = STATE_PAUSED
-            playButton.setImageDrawable(getDrawable(R.drawable.play_button))
-        }
-
-        private fun playbackControl() {
-            when (playerState) {
-                STATE_PLAYING -> {
-                    pausePlayer()
-                }
-
-                STATE_PREPARED, STATE_PAUSED -> {
-                    startPlayer()
-                }
-            }
-        }*/
 
     override fun onPause() {
         super.onPause()
@@ -161,17 +133,15 @@ class PlayerActivity : AppCompatActivity() {
     }
 
     private fun updateTimer(): Runnable {
+
         return object : Runnable {
             override fun run() {
-                binding.playDurationValue.text = SimpleDateFormat("mm:ss", Locale.getDefault()).format(player.currentPosition())
-                handler.postDelayed(this, DELAY_MILLIS)
-
-//                val currentPosition = mediaPlayer.currentPosition
-//                playDurationValue?.text = String.format(
-//                    SimpleDateFormat("mm:ss", Locale.getDefault()).format(currentPosition)
-//                        .toString()
-//                )
-//                mainThreadHandler?.postDelayed(this, DELAY_MILLIS)
+                val currentPosition = mediaPlayer.currentPosition
+                playDurationValue?.text = String.format(
+                    SimpleDateFormat("mm:ss", Locale.getDefault()).format(currentPosition)
+                        .toString()
+                )
+                mainThreadHandler?.postDelayed(this, DELAY_MILLIS)
             }
         }
     }
@@ -179,3 +149,4 @@ class PlayerActivity : AppCompatActivity() {
 
 }
 
+*/

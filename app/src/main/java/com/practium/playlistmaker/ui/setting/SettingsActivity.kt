@@ -1,8 +1,7 @@
-package com.practium.playlistmaker
+package com.practium.playlistmaker.ui.setting
 
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.content.SharedPreferences
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -10,6 +9,9 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.widget.SwitchCompat
+import com.practium.playlistmaker.App
+import com.practium.playlistmaker.R
+import com.practium.playlistmaker.data.SharedPreferences.SharedPreferencesConstants
 
 class SettingsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

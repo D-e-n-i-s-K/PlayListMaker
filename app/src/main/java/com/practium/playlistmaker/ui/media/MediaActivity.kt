@@ -1,8 +1,9 @@
-package com.practium.playlistmaker
+package com.practium.playlistmaker.ui.media
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
+import com.practium.playlistmaker.R
 
 class MediaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
